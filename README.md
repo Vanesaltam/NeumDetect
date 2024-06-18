@@ -26,7 +26,7 @@ El modelo de NeumDetect se entrenó utilizando un conjunto de datos de radiograf
 - API de ChatGPT para la generación de explicaciones y recomendaciones
 
 ## Instalación y uso 🚀
-1. Clona este repositorio: `git clone https://github.com/tu-usuario/neumdetect.git`
+1. Clona este repositorio: `git clone https://github.com/PabloZuVal/NeumDetect`
 2. Instala las dependencias: `pip install -r requirements.txt`
 3.
 <!-- 5. Ejecuta la aplicación: `python app.py`
