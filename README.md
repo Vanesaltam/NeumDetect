@@ -32,8 +32,13 @@ El modelo de NeumDetect se entrenó utilizando un conjunto de datos de radiograf
 <!-- 5. Ejecuta la aplicación: `python app.py`
 4. Accede a la aplicación en tu navegador web: `http://localhost:5000` -->
 
+## Contribuyentes
+Este proyecto ha sido desarrollado por:
+- [Pablo Zúñiga](https://github.com/PabloZuVal)
+- [Valentina Hodges](https://github.com/ValeHodges)
+- [Vanesa Altamirano](https://github.com/Vanesaltam)
+
 <!-- ## Contribución 🤝
-¡Nos encanta recibir contribuciones de la comunidad! Si deseas colaborar en este proyecto, por favor lee nuestras [pautas de contribución](CONTRIBUTING.md) y crea un pull request con tus mejoras.
 
 ## Licencia 📄
 Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para obtener más información.
