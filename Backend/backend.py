@@ -6,6 +6,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Flatten
 from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
 from tensorflow.keras.preprocessing import image
+from tensorflow.keras import layers, models
 from PIL import Image
 import logging
 
@@ -16,18 +17,33 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-weights_path = os.path.join(current_dir, '..', 'Models', 'VGG16', 'modelo_neumonia_vgg16_weights.h5')
+weights_path = os.path.join(current_dir, '..', 'Models', 'VGG16', 'modelo_neumonia_vgg16_precision_weights.h5')
 
 def create_model():
     base_model = VGG16(weights="imagenet", include_top=False, input_shape=(150, 150, 3))
     base_model.trainable = False
 
-    model = Sequential([
+    flatten_layer = layers.Flatten()
+    dense_layer1 = layers.Dense(500, activation='relu')
+    dense_layer2 = layers.Dense(250, activation='relu')  # Nueva capa densa
+    dense_layer3 = layers.Dense(100, activation='relu')  # Nueva capa densa
+    prediction_layer = layers.Dense(1, activation='sigmoid')
+
+    model = models.Sequential([
         base_model,
-        Flatten(),
-        Dense(500, activation='relu'),
-        Dense(1, activation='sigmoid')
+        flatten_layer,
+        dense_layer1,
+        dense_layer2,
+        dense_layer3,
+        prediction_layer
     ])
+
+    # model = Sequential([
+    #     base_model,
+    #     Flatten(),
+    #     Dense(500, activation='relu'),
+    #     Dense(1, activation='sigmoid')
+    # ])
 
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
     return model
@@ -45,11 +61,11 @@ def load_and_preprocess_image(img: Image.Image) -> np.ndarray:
     img = img.resize((150, 150))
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
-    img_array = preprocess_input(img_array)  # Preprocesamiento específico de VGG16
+    img_array /= 255.0
     return img_array
 
-@app.post("/predict")
-async def predict(file: UploadFile = File(...)):
+@app.post("/predict_vgg16")
+async def predict_vgg16(file: UploadFile = File(...)):
     try:
         logger.info(f"Recibida imagen: {file.filename}")
         image_data = await file.read()
@@ -65,14 +81,14 @@ async def predict(file: UploadFile = File(...)):
 
         if prediction[0][0] > 0.5:
             result = "Neumonía"
-            probability = float(prediction[0][0])
+            probability = (prediction[0][0])
         else:
             result = "Normal"
-            probability = float(1 - prediction[0][0])
+            probability = (1 - prediction[0][0])
 
         return {
             "diagnosis": result,
-            "probability": probability
+            "probability": f"{probability:.2f}"
         }
     except Exception as e:
         logger.error(f"Error durante la predicción: {str(e)}")
