@@ -21,9 +21,9 @@ El modelo de NeumDetect se entrenó utilizando un conjunto de datos de radiograf
 ## Tecnologías utilizadas 🛠
 - Python
 - TensorFlow y Keras para el desarrollo del modelo de aprendizaje profundo
-- Flask para la creación de la API y el backend
-- HTML, CSS y JavaScript para la interfaz de usuario
-- API de ChatGPT para la generación de explicaciones y recomendaciones
+- FastAPI para la creación de la API y el backend
+- Streamlit para la interfaz de usuario
+<!-- - API de ChatGPT para la generación de explicaciones y recomendaciones -->
 
 ## Instalación y uso 🚀
 1. Clona este repositorio: `git clone https://github.com/PabloZuVal/NeumDetect`
