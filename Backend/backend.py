@@ -2,8 +2,8 @@ import io
 import os
 import numpy as np
 from fastapi import FastAPI, File, UploadFile, HTTPException
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Flatten
+# from tensorflow.keras.models import Sequential
+# from tensorflow.keras.layers import Dense, Flatten
 from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras import layers, models
