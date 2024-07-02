@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 from PIL import Image
-import io
+import io, os
 
 # Configuración de la página
 st.set_page_config(page_title="NeumDetect", layout="wide")
@@ -36,6 +36,18 @@ MODELS = {
     "Modelo ResNet50": predict_resnet50,
     "Modelo personalizado": predict_custom
 }
+
+# Función para mostrar la imagen centrada
+def display_centered_image(image_path, width=300):
+    col1, col2, col3 = st.columns([1,2,1])
+    with col2:
+        st.image(image_path, width=width)
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+logo_path = os.path.join(current_dir, '..', 'img', 'LOGO2.png')
+
+# Mostrar la imagen centrada en el encabezado
+display_centered_image(logo_path, width=300)  # Ajusta la ruta y el ancho según sea necesario
 
 # Título y logo
 st.title("NeumDetect: Detección de Neumonía")
