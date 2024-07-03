@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="img/LOGO2.png" width="200" alt="Texto alternativo">
+</p>
+
 # NeumDetect - Identificador de Neumonía 🫁
 
 NeumDetect es una aplicación innovadora que utiliza técnicas de deep learning y computer vision para detectar la neumonía a partir de radiografías de tórax. El objetivo principal de este proyecto es mejorar el diagnóstico temprano y preciso de la neumonía, una enfermedad respiratoria grave que afecta a millones de personas en todo el mundo.
