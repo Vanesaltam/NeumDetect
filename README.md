@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="img/LOGO2.png" width="200" alt="Texto alternativo">
+  <img src="img/NeumDetect.png" width="500" alt="Texto alternativo">
 </p>
 
 # NeumDetect - Identificador de Neumonía 🫁
