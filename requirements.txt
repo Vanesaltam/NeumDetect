@@ -278,3 +278,5 @@ xgboost==1.6.2
 XlsxWriter==3.0.3
 yapf==0.32.0
 zipp==3.10.0
+
+google-cloud-aiplatform==1.59.0
